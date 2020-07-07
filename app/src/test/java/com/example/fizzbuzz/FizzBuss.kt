@@ -55,13 +55,17 @@ fun fizzBuzz(max : Int, rules : List<String>?) {
                 printLst.add("Bong")
             }
             if (rules.contains("13") && index.rem(13) == 0) {
-                if (printLst.isEmpty() || printLst[0] == "Fizz") {
+                var bLst = printLst.dropWhile { it[0] != 'B' }
+                bLst = bLst.takeWhile { it[0] == 'B' }          // Creates a list of the words beginning with b
+
+                if (bLst.isEmpty()) {                           // If no words begin with b "Fezz" is added to the end
                     printLst.add("Fezz")
                 }
-                else {
-                    printLst.add(0, "Fezz")
+                else {                                          // Else add "Fezz" before the first word that begins with b
+                    printLst.add(printLst.indexOf(bLst[0]), "Fezz")
                 }
             }
+
             if (rules.contains("17") && index.rem(17) == 0){
                 printLst.reverse()
             }
@@ -74,7 +78,7 @@ fun fizzBuzz(max : Int, rules : List<String>?) {
 
         else{
             for (item in printLst) {
-                print(item)
+               print(item)
             }
         }
 
