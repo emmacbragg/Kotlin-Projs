@@ -41,24 +41,31 @@ fun fizzBuzz(max : Int, rules : List<String>?) {
 
     while (index <= max) {
         if (rules != null) {
-            if (rules.contains("3") && index.rem(3) == 0 && index.rem(11) != 0) {
+            if (rules.contains("3") && index.rem(3) == 0) {
                 printLst.add("Fizz")
             }
-            if (rules.contains("11") && index.rem(13) == 0) {
-                printLst.add("Fezz")
-            }
-            if (rules.contains("11") && index.rem(11) == 0) {
-                printLst.add("Bong")
-            }
-            if (rules.contains("5") && index.rem(5) == 0 && index.rem(11) != 0){
+            if (rules.contains("5") && index.rem(5) == 0){
                 printLst.add("Buzz")
             }
-            if (rules.contains("7") && index.rem(7) == 0 && index.rem(11) != 0){
+            if (rules.contains("7") && index.rem(7) == 0){
                 printLst.add("Bang")
             }
-            if (index.rem(17) == 0){
+            if (rules.contains("11") && index.rem(11) == 0) {
+                printLst.clear()
+                printLst.add("Bong")
+            }
+            if (rules.contains("13") && index.rem(13) == 0) {
+                if (printLst.isEmpty() || printLst[0] == "Fizz") {
+                    printLst.add("Fezz")
+                }
+                else {
+                    printLst.add(0, "Fezz")
+                }
+            }
+            if (rules.contains("17") && index.rem(17) == 0){
                 printLst.reverse()
             }
+
         }
 
         if (printLst.isEmpty()){
